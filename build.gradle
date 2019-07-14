@@ -5,6 +5,9 @@ plugins {
 }
 
 apply plugin: 'io.spring.dependency-management'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'application'
 
 group = 'com.jpl'
 version = '0.0.1-SNAPSHOT'
@@ -18,15 +21,22 @@ repositories {
 
 ext {
     set('vaadinVersion', "13.0.10")
+    set('c3p0', "0.9.5.4")
+    set('springSecurityTaglibs', "5.1.5.RELEASE")
+    set('jstl', "1.2")
 }
 
 dependencies {
+    compile "org.springframework.security:spring-security-taglibs:${springSecurityTaglibs}"
+    compile "com.mchange:c3p0:${c3p0}"
+    compile "javax.servlet:jstl:${jstl}"
+
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
     implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'com.vaadin:vaadin-spring-boot-starter'
+//    implementation 'com.vaadin:vaadin-spring-boot-starter'
     runtimeOnly 'mysql:mysql-connector-java'
     providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
@@ -36,11 +46,11 @@ dependencies {
     testImplementation 'org.springframework.security:spring-security-test'
 }
 
-dependencyManagement {
-    imports {
-        mavenBom "com.vaadin:vaadin-bom:${vaadinVersion}"
-    }
-}
+//dependencyManagement {
+//    imports {
+//        mavenBom "com.vaadin:vaadin-bom:${vaadinVersion}"
+//    }
+//}
 
 test {
     useJUnitPlatform()
