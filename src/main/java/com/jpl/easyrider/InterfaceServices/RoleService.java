@@ -2,7 +2,7 @@ package com.jpl.easyrider.InterfaceServices;
 
 import com.jpl.easyrider.domain.Role;
 
-public interface RoleDao {
+public interface RoleService {
 
     Role findByName(String name);
 

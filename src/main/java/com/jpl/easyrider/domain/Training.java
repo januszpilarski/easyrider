@@ -1,5 +1,8 @@
 package com.jpl.easyrider.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.Objects;
@@ -13,7 +16,7 @@ public class Training {
     private Long id;
     private Date dateTraining;
 
-    @ManyToOne//(targetEntity = User.class)
+    @ManyToOne
     @JoinTable(
             name = "users_trainings",
             joinColumns = @JoinColumn(
@@ -22,9 +25,10 @@ public class Training {
             inverseJoinColumns = @JoinColumn(
                     name = "user_id",
                     referencedColumnName = "id"))
+    @JsonBackReference
     private User user;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinTable(
             name = "trainings_horses",
             joinColumns = @JoinColumn(
@@ -33,6 +37,7 @@ public class Training {
             inverseJoinColumns = @JoinColumn(
                     name = "horse_id",
                     referencedColumnName = "id"))
+    @JsonManagedReference
     private Horse horse;
 
     public Long getId() {

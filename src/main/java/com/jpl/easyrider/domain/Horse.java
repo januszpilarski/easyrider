@@ -1,5 +1,7 @@
 package com.jpl.easyrider.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.Objects;
@@ -14,7 +16,8 @@ public class Horse {
     private String name;
     private int age;
 
-    @OneToMany(mappedBy = "horse")
+    @OneToMany(mappedBy = "horse", fetch = FetchType.EAGER)
+    @JsonBackReference
     private Collection<Training> trainings;
 
     public Long getId() {

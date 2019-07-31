@@ -2,7 +2,7 @@ package com.jpl.easyrider.InterfaceServices;
 
 import com.jpl.easyrider.domain.Privilege;
 
-public interface PrivilegeDao {
+public interface PrivilegeService {
 
     Privilege findByName(String name);
 

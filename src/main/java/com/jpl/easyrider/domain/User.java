@@ -1,5 +1,9 @@
 package com.jpl.easyrider.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.Objects;
@@ -21,7 +25,7 @@ public class User {
     private boolean enabled;
     private boolean tokenExpired;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "users_roles",
             joinColumns = @JoinColumn(
@@ -30,9 +34,12 @@ public class User {
             inverseJoinColumns = @JoinColumn(
                     name = "role_id",
                     referencedColumnName = "id"))
+    @JsonManagedReference
     private Collection<Role> roles;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    @Fetch(value = FetchMode.SUBSELECT)
+    @JsonManagedReference
     private Collection<Training> trainings;
 
 

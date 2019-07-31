@@ -1,5 +1,7 @@
 package com.jpl.easyrider.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.Objects;
@@ -14,9 +16,10 @@ public class Role {
     private String name;
 
     @ManyToMany(mappedBy =  "roles")
+    @JsonBackReference
     private Collection<User> users;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "roles_privileges",
             joinColumns = @JoinColumn(
                     name = "role_id",

@@ -31,6 +31,11 @@ ext {
 }
 
 dependencies {
+    compile 'com.google.api-client:google-api-client:1.23.0'
+//    compile 'com.google.oauth-client:google-oauth-client-jetty:1.23.0'
+    compile 'com.google.oauth-client:google-oauth-client:1.30.1'
+
+    compile 'com.google.apis:google-api-services-calendar:v3-rev379-1.25.0'
     compile "org.springframework.security:spring-security-taglibs:${springSecurityTaglibs}"
     compile "com.mchange:c3p0:${c3p0}"
     compile "javax.servlet:jstl:${jstl}"
@@ -42,7 +47,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
 //    implementation 'com.vaadin:vaadin-spring-boot-starter'
     runtimeOnly 'mysql:mysql-connector-java'
-    providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+//    providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
         exclude group: 'junit', module: 'junit'

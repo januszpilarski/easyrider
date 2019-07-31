@@ -6,7 +6,7 @@ import com.jpl.easyrider.dto.UserDto;
 import java.util.List;
 import java.util.Optional;
 
-public interface UserDao {
+public interface UserService {
 
     List<User> findAll();
 
