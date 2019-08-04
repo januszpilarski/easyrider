@@ -1,6 +1,7 @@
 package com.jpl.easyrider.calendar;
 
 import com.google.api.client.auth.oauth2.AuthorizationCodeRequestUrl;
+import com.google.api.client.auth.oauth2.AuthorizationCodeTokenRequest;
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeFlow;
 import com.google.api.client.googleapis.auth.oauth2.GoogleClientSecrets;
@@ -18,6 +19,8 @@ import com.google.api.services.calendar.Calendar;
 import com.google.api.services.calendar.CalendarScopes;
 import com.google.api.services.calendar.model.Event;
 import com.google.api.services.calendar.model.Events;
+import com.google.auth.Credentials;
+import com.google.auth.oauth2.GoogleCredentials;
 
 import java.io.*;
 import java.security.GeneralSecurityException;
@@ -25,9 +28,6 @@ import java.util.Collections;
 import java.util.List;
 
 public class GoogleCalendar {
-
-    private static GoogleAuthorizationCodeFlow flow;
-
 
     private static final String APPLICATION_NAME = "easyrider";
     private static final JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
@@ -39,6 +39,7 @@ public class GoogleCalendar {
      */
     private static final List<String> SCOPES = Collections.singletonList(CalendarScopes.CALENDAR);
     private static final String CREDENTIALS_FILE_PATH = "/client_secret_227864131249-rgg1nc0m03kdv9ofdb7cep0uoopj3d3f.apps.googleusercontent.com.json";
+    private static final String SERVICE_CREDENTIALS_FILE_PATH = "/quickstart-1561809549584-750df5ba61d8.json";
     private static final String REDIRECT_URIS = "http://localhost:8080";
 
     /**
@@ -80,7 +81,7 @@ public class GoogleCalendar {
 
         GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow
                 .Builder(HTTP_TRANSPORT, JSON_FACTORY, clientSecrets, SCOPES)
-                .setDataStoreFactory(new FileDataStoreFactory(new java.io.File(TOKENS_DIRECTORY_PATH)))
+                .setDataStoreFactory(new FileDataStoreFactory(new File(TOKENS_DIRECTORY_PATH)))
                 .setAccessType("offline")
                 .build();
 
@@ -104,25 +105,18 @@ public class GoogleCalendar {
         return credentials;
     }
 
-    private static String authorize() throws IOException, GeneralSecurityException {
+    private static GoogleCredentials authorize() throws IOException, GeneralSecurityException {
 
-        InputStream in = GoogleCalendar.class.getResourceAsStream(CREDENTIALS_FILE_PATH);
+        InputStream in = GoogleCalendar.class
+                .getResourceAsStream(SERVICE_CREDENTIALS_FILE_PATH);
         if (in == null) {
-            throw new FileNotFoundException("Resource not found!: " + CREDENTIALS_FILE_PATH);
+            throw new FileNotFoundException("Resource not found!: " + SERVICE_CREDENTIALS_FILE_PATH);
         }
 
-        GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(JSON_FACTORY, new InputStreamReader(in));
+        GoogleCredentials googleCredentials = GoogleCredentials.fromStream(in);
+        googleCredentials.refreshIfExpired();
 
-        AuthorizationCodeRequestUrl authorizationUrl;
-        if (flow == null) {
-
-            flow = new GoogleAuthorizationCodeFlow.Builder(GoogleNetHttpTransport.newTrustedTransport(), JSON_FACTORY, clientSecrets,
-                    Collections.singleton(CalendarScopes.CALENDAR)).build();
-        }
-        authorizationUrl = flow.newAuthorizationUrl()
-                .setRedirectUri("urn:ietf:wg:oauth:2.0:oob");
-        System.out.println("cal authorizationUrl->" + authorizationUrl);
-        return authorizationUrl.build();
+        return googleCredentials;
     }
 
     public static String getDates() throws IOException, GeneralSecurityException {

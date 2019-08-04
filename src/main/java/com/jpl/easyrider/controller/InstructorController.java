@@ -8,6 +8,6 @@ public class InstructorController {
 
     @GetMapping("/instructor")
     public String ShowInstructorHomePage(){
-        return "/instructor-home";
+        return "/zinstructor-home";
     }
 }
