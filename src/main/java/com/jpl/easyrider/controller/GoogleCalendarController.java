@@ -43,9 +43,9 @@ public class GoogleCalendarController {
     private static final JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
     private static com.google.api.services.calendar.Calendar client;
 
-    GoogleClientSecrets clientSecrets;
-    GoogleAuthorizationCodeFlow flow;
-    Credential credential;
+    private GoogleClientSecrets clientSecrets;
+    private GoogleAuthorizationCodeFlow flow;
+    private Credential credential;
 
     @Value("${google.client.client-id}")
     private String clientId;
@@ -56,8 +56,8 @@ public class GoogleCalendarController {
 
     private Set<Event> events = new HashSet<>();
 
-    final DateTime date1 = new DateTime("2019-05-05T16:30:00.000+05:30");
-    final DateTime date2 = new DateTime(new Date());
+    private final DateTime date1 = new DateTime("2019-06-05T16:30:00.000+05:30");
+    private final DateTime date2 = new DateTime(new Date());
 
     public void setEvents(Set<Event> events) {
         this.events = events;
