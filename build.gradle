@@ -13,6 +13,13 @@ group = 'com.jpl'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '12'
 
+configurations {
+    developmentOnly
+    runtimeClasspath {
+        extendsFrom developmentOnly
+    }
+}
+
 application {
     mainClassName = 'com.jpl.easyrider.EasyriderApplication'
 }
@@ -52,8 +59,12 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 //    implementation 'com.vaadin:vaadin-spring-boot-starter'
     runtimeOnly 'mysql:mysql-connector-java'
+
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
     providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
