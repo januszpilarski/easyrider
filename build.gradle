@@ -24,7 +24,7 @@ repositories {
 }
 
 ext {
-    set('vaadinVersion', "13.0.10")
+    set('vaadinVersion', "13.0.11")
     set('c3p0', "0.9.5.4")
     set('springSecurityTaglibs', "5.1.5.RELEASE")
     set('jstl', "1.2")
@@ -39,7 +39,6 @@ dependencies {
     compile 'com.google.appengine:appengine-api-1.0-sdk:1.9.76'
     compile 'com.google.oauth-client:google-oauth-client-java6:1.30.1'
 
-
     compile "com.google.api-client:google-api-client:${googleApiClient}"
     compile "com.google.oauth-client:google-oauth-client:${googleOauthClient}"
     compile "com.google.apis:google-api-services-calendar:${googleCalendar}"
@@ -47,6 +46,7 @@ dependencies {
     compile "com.mchange:c3p0:${c3p0}"
     compile "javax.servlet:jstl:${jstl}"
 
+    implementation 'org.springframework.security:spring-security-config'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
     implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
@@ -54,7 +54,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
 //    implementation 'com.vaadin:vaadin-spring-boot-starter'
     runtimeOnly 'mysql:mysql-connector-java'
-//    providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+    providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
         exclude group: 'junit', module: 'junit'
