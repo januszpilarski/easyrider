@@ -4,7 +4,7 @@
 spring:
   datasource:
 #    url: jdbc:mysql://localhost:3306/sfg_dev?useSSL=false&serverTimezone=UTC&useUnicode=true&useJDBCCompliantTimezoneShift=true;
-#    username: sfg_dev_user
+#    username: er_dev_user
 #    password: pas1
 #    driver-class-name: com.mysql.cj.jdbc.Driver
     platform: mysql
@@ -31,7 +31,7 @@ spring:
 #            create-source: metadata
 #            scripts:
 #              action: create
-#              create-target: kowboj_database_create.sql
+#              create-target: easyrider_database_create.sql
 
 #
 # Connection pool properties

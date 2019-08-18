@@ -1,0 +1,17 @@
+create table horse (id bigint not null auto_increment, age integer not null, name varchar(255), primary key (id)) engine=InnoDB;
+create table privilege (id bigint not null auto_increment, name varchar(255), primary key (id)) engine=InnoDB;
+create table role (id bigint not null auto_increment, name varchar(255), primary key (id)) engine=InnoDB;
+create table roles_privileges (role_id bigint not null, privilege_id bigint not null) engine=InnoDB;
+create table training (id bigint not null auto_increment, date_training datetime, primary key (id)) engine=InnoDB;
+create table trainings_horses (horse_id bigint, training_id bigint not null, primary key (training_id)) engine=InnoDB;
+create table user_account (id bigint not null auto_increment, email varchar(255), enabled bit not null, first_name varchar(255), last_name varchar(255), password varchar(255), token_expired bit not null, weight integer not null, primary key (id)) engine=InnoDB;
+create table users_roles (user_id bigint not null, role_id bigint not null) engine=InnoDB;
+create table users_trainings (user_id bigint, training_id bigint not null, primary key (training_id)) engine=InnoDB;
+alter table roles_privileges add constraint FK5yjwxw2gvfyu76j3rgqwo685u foreign key (privilege_id) references privilege (id);
+alter table roles_privileges add constraint FK9h2vewsqh8luhfq71xokh4who foreign key (role_id) references role (id);
+alter table trainings_horses add constraint FKfmrleyyeg29chv455g743wrf3 foreign key (horse_id) references horse (id);
+alter table trainings_horses add constraint FKma6jvncdarv41qyhhrl5vsrec foreign key (training_id) references training (id);
+alter table users_roles add constraint FKt4v0rrweyk393bdgt107vdx0x foreign key (role_id) references role (id);
+alter table users_roles add constraint FKci4mdvg1fmo9eqmwno1y9o0fa foreign key (user_id) references user_account (id);
+alter table users_trainings add constraint FKlbv6rm1eo8ox270tww7y2hpi6 foreign key (user_id) references user_account (id);
+alter table users_trainings add constraint FKjsgcdf5rpkd0okh7i197emt0p foreign key (training_id) references training (id);

@@ -34,7 +34,7 @@ import com.google.api.services.calendar.Calendar.Events;
 import com.google.api.services.calendar.CalendarScopes;
 import com.google.api.services.calendar.model.Event;
 
-@Controller
+//@Controller
 public class GoogleCalendarController {
 
     private final static Log logger = LogFactory.getLog(GoogleCalendarController.class);
