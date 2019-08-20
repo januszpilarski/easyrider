@@ -15,8 +15,11 @@ spring:
     database: mysql
     show-sql: true
 
-# The Open Session In View Anti-Pattern
-    open-in-view: false
+#  main:
+
+    # The Open Session In View Anti-Pattern
+#    open-in-view: false
+#    allow-bean-definition-overriding: true
 
 #  resources:
 #    static-locations: /kowboj3f/src/main/webapp/WEB-INF/views/jsp/

@@ -19,9 +19,9 @@ import java.beans.PropertyVetoException;
 import java.util.logging.Logger;
 
 @Configuration
-@EnableWebMvc
-@ComponentScan(basePackages = {"com.jpl.easyrider"})
-@PropertySource("classpath:appConfig.properties")
+//@EnableWebMvc
+//@ComponentScan(basePackages = {"com.jpl.easyrider"})
+//@PropertySource("classpath:appConfig.properties")
 public class AppConfig implements WebMvcConfigurer {
 
     @Value("${spring.mvc.view.prefix}")
@@ -35,7 +35,7 @@ public class AppConfig implements WebMvcConfigurer {
 
     private Logger logger = Logger.getLogger(getClass().getName());
 
-    @Bean
+//    @Bean
     public ViewResolver viewResolver() {
 
         InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();

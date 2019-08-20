@@ -1,5 +1,6 @@
 package com.jpl.easyrider;
 
+import com.jpl.easyrider.configuration.ThymeleafConfig;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 public class SpringMvcDispatcherServletInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
@@ -11,7 +12,7 @@ public class SpringMvcDispatcherServletInitializer extends AbstractAnnotationCon
 
     @Override
     protected Class<?>[] getServletConfigClasses() {
-        return new Class[] {AppConfig.class};
+        return new Class[] {ThymeleafConfig.class};
     }
 
     @Override
