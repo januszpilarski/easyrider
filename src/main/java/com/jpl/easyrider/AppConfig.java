@@ -19,9 +19,9 @@ import java.beans.PropertyVetoException;
 import java.util.logging.Logger;
 
 @Configuration
-//@EnableWebMvc
-//@ComponentScan(basePackages = {"com.jpl.easyrider"})
-//@PropertySource("classpath:appConfig.properties")
+@EnableWebMvc
+@ComponentScan(basePackages = {"com.jpl.easyrider"})
+@PropertySource("classpath:appConfig.properties")
 public class AppConfig implements WebMvcConfigurer {
 
     @Value("${spring.mvc.view.prefix}")
@@ -48,8 +48,8 @@ public class AppConfig implements WebMvcConfigurer {
 
     @Override
     public void addResourceHandlers(final ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/resources/**")
-                .addResourceLocations("classpath:/resources/");
+        registry.addResourceHandler("/resources/**", "/css/**")
+                .addResourceLocations("classpath:/resources/", "classpath:/static/css/");
     }
 
     @Bean

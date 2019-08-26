@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Login Page</title>
+    <link rel="stylesheet" th:href="@{/css/main.css}"/>
 </head>
 <body>
-Hi
+    Hi
 
-<!--/*@thymesVar id="theDate" type="jdk"*/-->
-<p th:text="'Time on server' + ${theDate}" >
+    <!--/*@thymesVar id="theDate" type="jdk"*/-->
+    <p th:text="'Time on server' + ${theDate}" class="base" />
 
 </body>
 </html>
