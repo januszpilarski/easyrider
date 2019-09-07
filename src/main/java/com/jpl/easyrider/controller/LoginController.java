@@ -10,7 +10,7 @@ public class LoginController {
     @GetMapping("/LoginPage")
     public String showLoginPage(Model theModel){
 
-        theModel.addAttribute("serverDate", new java.util.Date().getTime());
+        theModel.addAttribute("serverDate", new java.util.Date());
 
         return "login";
     }

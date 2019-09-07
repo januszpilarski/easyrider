@@ -48,8 +48,8 @@ public class AppConfig implements WebMvcConfigurer {
 
     @Override
     public void addResourceHandlers(final ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/resources/**", "/css/**")
-                .addResourceLocations("classpath:/resources/", "classpath:/static/css/");
+        registry.addResourceHandler("/resources/**", "/css/**", "/img/**")
+                .addResourceLocations("classpath:/resources/", "classpath:/static/css/", "classpath:/static/img/");
     }
 
     @Bean

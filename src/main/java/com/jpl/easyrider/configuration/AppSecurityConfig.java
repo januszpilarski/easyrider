@@ -27,6 +27,9 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private UserDetailsService userDetailsService;
 
+    @Autowired
+    private LoggingAccessDeniedHandler loggingAccessDeniedHandler;
+
     @Bean("authenticationManager")
     @Override
     public AuthenticationManager authenticationManagerBean() throws Exception {
@@ -54,6 +57,7 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/").permitAll()
+                .antMatchers("/static/img/common/**").permitAll()
                 .antMatchers("/riders").hasRole("RIDER")
                 .antMatchers("/instructor/**").hasRole("INSTRUCTOR")
                 .antMatchers("/manager/**", "/riders", "/instructor/**").hasRole("MANAGER")
@@ -70,7 +74,7 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .and()
                 .exceptionHandling()
-                .accessDeniedPage("/access-denied")
+                .accessDeniedHandler(loggingAccessDeniedHandler)
         ;
     }
 

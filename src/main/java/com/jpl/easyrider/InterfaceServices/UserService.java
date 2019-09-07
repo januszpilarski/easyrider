@@ -1,5 +1,6 @@
 package com.jpl.easyrider.InterfaceServices;
 
+import com.jpl.easyrider.domain.Role;
 import com.jpl.easyrider.domain.User;
 import com.jpl.easyrider.dto.UserDto;
 
@@ -9,6 +10,8 @@ import java.util.Optional;
 public interface UserService {
 
     List<User> findAll();
+
+    List<User> findAllByRoles(Role role);
 
     User registerNewUserAccount(UserDto userDto);
 

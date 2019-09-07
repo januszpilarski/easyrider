@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet"
+          href="https://unpkg.com/purecss@1.0.1/build/pure-min.css"
+          integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47"
+          crossorigin="anonymous">
+    <title>Poznaj naszych instruktorów</title>
+</head>
+<body>
+
+<tr th:each="user: ${users}">
+    <td th:text="${user}"/><br>
+    <p>------------------------------------</p>
+</tr>
+
+<table class="pure-table">
+    <thead>
+    <tr>
+        <th>Imię</th>
+        <th>Kontakt</th>
+        <th></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="user: ${users}">
+
+        <td th:text="${user.getFirstName()}"/>
+        <td th:text="${user.getEmail()}"/>
+        <td th:text="${user.getEmail()}"/>
+
+    </tr>
+    </tbody>
+
+</table>
+
+
+
+</body>
+</html>

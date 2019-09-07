@@ -2,6 +2,7 @@ package com.jpl.easyrider.Services;
 
 
 import com.jpl.easyrider.InterfaceServices.UserService;
+import com.jpl.easyrider.domain.Role;
 import com.jpl.easyrider.domain.User;
 import com.jpl.easyrider.dto.UserDto;
 import com.jpl.easyrider.repositories.PrivilegeRepository;
@@ -34,6 +35,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> findAll(){
+        return userRepository.findAll();
+    }
+
+    @Override
+    public List<User> findAllByRoles(Role role) {
         return userRepository.findAll();
     }
 

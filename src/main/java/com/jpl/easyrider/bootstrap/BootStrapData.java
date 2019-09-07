@@ -14,6 +14,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Profile;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Component;
 
 import java.time.Instant;
 import java.util.*;
@@ -37,7 +38,7 @@ public class BootStrapData implements CommandLineRunner {
  //       this.passwordEncoder = passwordEncoder;
     }
 
-    @Bean
+//    @Bean
     public PasswordEncoder passwordEncoder() {
 
         return new BCryptPasswordEncoder();
