@@ -1,3 +1,9 @@
+logging:
+  level:
+    root: info
+    com.memorynotfound: info
+    org.springframework.web: info
+    org.springframework.security: info
 #
 # JDBC connection properties
 #

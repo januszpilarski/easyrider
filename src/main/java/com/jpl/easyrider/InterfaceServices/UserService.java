@@ -11,7 +11,7 @@ public interface UserService {
 
     List<User> findAll();
 
-    List<User> findAllByRoles(Role role);
+    List<User> findAllByRole(String role);
 
     User registerNewUserAccount(UserDto userDto);
 

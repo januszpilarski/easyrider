@@ -25,7 +25,13 @@ public class User {
     private boolean enabled;
     private boolean tokenExpired;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @Lob
+    private String selfDescription;
+
+    @Lob
+    private Byte[] image;
+
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "users_roles",
             joinColumns = @JoinColumn(
@@ -37,11 +43,14 @@ public class User {
     @JsonManagedReference
     private Collection<Role> roles;
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @Fetch(value = FetchMode.SUBSELECT)
     @JsonManagedReference
     private Collection<Training> trainings;
 
+    public User() {
+        super();
+    }
 
     public Long getId() {
         return id;
@@ -121,6 +130,22 @@ public class User {
 
     public void setTrainings(Collection<Training> trainings) {
         this.trainings = trainings;
+    }
+
+    public String getSelfDescription() {
+        return selfDescription;
+    }
+
+    public void setSelfDescription(String selfDescription) {
+        this.selfDescription = selfDescription;
+    }
+
+    public Byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(Byte[] image) {
+        this.image = image;
     }
 
     @Override

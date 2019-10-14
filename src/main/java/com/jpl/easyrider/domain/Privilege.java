@@ -20,11 +20,6 @@ public class Privilege {
         super();
     }
 
-    public Privilege(final String name) {
-        super();
-        this.name = name;
-    }
-
     public Long getId() {
         return id;
     }

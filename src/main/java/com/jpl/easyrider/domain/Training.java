@@ -28,7 +28,7 @@ public class Training {
     @JsonBackReference
     private User user;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinTable(
             name = "trainings_horses",
             joinColumns = @JoinColumn(
@@ -39,6 +39,10 @@ public class Training {
                     referencedColumnName = "id"))
     @JsonManagedReference
     private Horse horse;
+
+    public Training() {
+        super();
+    }
 
     public Long getId() {
         return id;

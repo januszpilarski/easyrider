@@ -20,7 +20,7 @@ public class InstructorController {
     @GetMapping("/instructors-descriptions")
     public String ShowInstructors(Model model) {
 
-        model.addAttribute("users", userService.findAll());
+        model.addAttribute("users", userService.findAllByRole("ROLE_MANAGER"));
 
         return "instructors-descriptions";
     }

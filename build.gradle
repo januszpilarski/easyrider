@@ -31,7 +31,6 @@ repositories {
 }
 
 ext {
-    set('vaadinVersion', "13.0.11")
     set('c3p0', "0.9.5.4")
     set('springSecurityTaglibs', "5.1.5.RELEASE")
     set('jstl', "1.2")

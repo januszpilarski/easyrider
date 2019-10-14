@@ -20,6 +20,10 @@ public class Horse {
     @JsonBackReference
     private Collection<Training> trainings;
 
+    public Horse() {
+        super();
+    }
+
     public Long getId() {
         return id;
     }

@@ -48,15 +48,15 @@ public class BootStrapData implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
         Role role1 = new Role();
-        role1.setName("ADMIN");
+        role1.setName("ROLE_MANAGER");
         roleRepository.save(role1);
 
         Role role2 = new Role();
-        role2.setName("INSTRUCTOR");
+        role2.setName("ROLE_INSTRUCTOR");
         roleRepository.save(role2);
 
         Role role3 = new Role();
-        role3.setName("USER");
+        role3.setName("ROLE_RIDER");
         roleRepository.save(role3);
 
         Horse horse1 = new Horse();
