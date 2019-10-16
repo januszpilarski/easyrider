@@ -1,6 +1,5 @@
 package com.jpl.easyrider.InterfaceServices;
 
-import com.jpl.easyrider.domain.Role;
 import com.jpl.easyrider.domain.User;
 import com.jpl.easyrider.dto.UserDto;
 

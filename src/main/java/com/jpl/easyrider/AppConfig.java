@@ -1,6 +1,7 @@
 package com.jpl.easyrider;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -50,6 +51,11 @@ public class AppConfig implements WebMvcConfigurer {
     public void addResourceHandlers(final ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/resources/**", "/css/**", "/img/**")
                 .addResourceLocations("classpath:/resources/", "classpath:/static/css/", "classpath:/static/img/");
+    }
+
+    @Bean
+    public ModelMapper modelMapper() {
+        return new ModelMapper();
     }
 
     @Bean

@@ -2,7 +2,6 @@ package com.jpl.easyrider.Services;
 
 
 import com.jpl.easyrider.InterfaceServices.UserService;
-import com.jpl.easyrider.domain.Role;
 import com.jpl.easyrider.domain.User;
 import com.jpl.easyrider.dto.UserDto;
 import com.jpl.easyrider.repositories.PrivilegeRepository;
@@ -10,7 +9,6 @@ import com.jpl.easyrider.repositories.RoleRepository;
 import com.jpl.easyrider.repositories.UserRepository;
 import com.jpl.easyrider.web.error.UserAlreadyExistException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -44,8 +42,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> findAllByRole(String name) {
-        return userRepository.findAllByRoles(name);
+    public List<User> findAllByRole(String role) {
+        return userRepository.findAllByRoles(role);
     }
 
     @Override
