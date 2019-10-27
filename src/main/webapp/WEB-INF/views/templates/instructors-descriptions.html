@@ -31,6 +31,11 @@
         <td th:text="${user.getSelfDescription()}"/>
 
     </tr>
+    <tr th:each="DBFile: ${images}">
+
+        <td th:text="${DBFile.getData()}"/>
+
+    </tr>
     </tbody>
 
 </table>

@@ -1,9 +1,13 @@
+#
+# logging
+#
 logging:
   level:
     root: info
     com.memorynotfound: info
     org.springframework.web: info
     org.springframework.security: info
+    org.hibernate.SQL: debug
 #
 # JDBC connection properties
 #
@@ -14,12 +18,28 @@ spring:
 #    password: pas1
 #    driver-class-name: com.mysql.cj.jdbc.Driver
     platform: mysql
+    hikari:
+      data-source-properties:
   jpa:
     hibernate:
       ddl-auto: validate
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     database: mysql
     show-sql: true
+#
+# MultipartProperties
+#
+# Enable multipart uploads
+  servlet:
+    multipart:
+      enabled: true
+      # Threshold after which files are written to disk.
+      file-size-threshold: 2KB
+      # Max file size.
+      max-file-size: 30MB
+      # Max Request Size
+      max-request-size: 30MB
+
 
 #  main:
 
