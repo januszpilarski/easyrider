@@ -26,17 +26,17 @@
     <tr th:each="user: ${users}">
 
         <td th:text="${user.getFirstName()}"/>
-        <td th:text="${user.getImage()}"/>
+        <td th:data="${user.getImage()}"/>
         <td th:text="${user.getEmail()}"/>
         <td th:text="${user.getSelfDescription()}"/>
 
     </tr>
     <tr th:each="DBFile: ${images}">
 
-        <td th:text="${DBFile.getData()}"/>
-
+        <img th:src="*{'data:image/png;base64,'+ DBFile}" />
     </tr>
-    </tbody>
+
+
 
 </table>
 

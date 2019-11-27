@@ -1,7 +1,8 @@
 package com.jpl.easyrider.InterfaceServices;
 
 import com.jpl.easyrider.domain.User;
-import com.jpl.easyrider.dto.UserDto;
+import com.jpl.easyrider.dto.UserDtoIngoing;
+import com.jpl.easyrider.dto.UserDtoOutgoing;
 
 import java.util.List;
 import java.util.Optional;
@@ -10,9 +11,9 @@ public interface UserService {
 
     List<User> findAll();
 
-    List<User> findAllByRole(String role);
+    List<UserDtoOutgoing> findAllByRole(String role);
 
-    User registerNewUserAccount(UserDto userDto);
+    User registerNewUserAccount(UserDtoIngoing userDto);
 
     void saveRegisteredUser(User user);
 

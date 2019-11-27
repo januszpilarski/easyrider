@@ -5,7 +5,7 @@ import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
-public class UserDto {
+public class UserDtoIngoing {
 
     @NotNull
     private String firstName;

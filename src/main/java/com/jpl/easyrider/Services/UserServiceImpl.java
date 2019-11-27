@@ -3,11 +3,15 @@ package com.jpl.easyrider.Services;
 
 import com.jpl.easyrider.InterfaceServices.UserService;
 import com.jpl.easyrider.domain.User;
-import com.jpl.easyrider.dto.UserDto;
+import com.jpl.easyrider.dto.UserDtoIngoing;
+import com.jpl.easyrider.dto.UserDtoOutgoing;
 import com.jpl.easyrider.repositories.PrivilegeRepository;
 import com.jpl.easyrider.repositories.RoleRepository;
 import com.jpl.easyrider.repositories.UserRepository;
 import com.jpl.easyrider.web.error.UserAlreadyExistException;
+import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeMap;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -42,12 +46,15 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> findAllByRole(String role) {
-        return userRepository.findAllByRoles(role);
+    public List<UserDtoOutgoing> findAllByRole(String role) {
+
+        ModelMapper modelMapper = new ModelMapper();
+
+        return modelMapper.map(userRepository.findAllByRoles(role), new TypeToken<List<UserDtoOutgoing>>(){}.getType());
     }
 
     @Override
-    public User registerNewUserAccount(final UserDto userDto) {
+    public User registerNewUserAccount(final UserDtoIngoing userDto) {
 
         if (checkIfEmailExists(userDto.getEmail())) {
             throw new UserAlreadyExistException("There is an account with that email adress: " + userDto.getEmail());
