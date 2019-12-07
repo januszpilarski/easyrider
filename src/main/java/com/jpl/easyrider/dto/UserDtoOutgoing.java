@@ -1,6 +1,8 @@
 package com.jpl.easyrider.dto;
 
 
+import com.jpl.easyrider.domain.DBFile;
+
 public class UserDtoOutgoing {
 
     private String firstName;
@@ -8,7 +10,7 @@ public class UserDtoOutgoing {
     private int weight;
     private String email;
     private String selfDescription;
-    private Byte[] image;
+    private DBFile portrait;
 
     public String getFirstName() {
         return firstName;
@@ -50,11 +52,11 @@ public class UserDtoOutgoing {
         this.selfDescription = selfDescription;
     }
 
-    public Byte[] getImage() {
-        return image;
+    public DBFile getPortrait() {
+        return portrait;
     }
 
-    public void setImage(Byte[] image) {
-        this.image = image;
+    public void setPortrait(DBFile portrait) {
+        this.portrait = portrait;
     }
 }

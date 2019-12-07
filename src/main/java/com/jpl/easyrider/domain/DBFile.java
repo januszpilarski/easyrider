@@ -1,5 +1,7 @@
 package com.jpl.easyrider.domain;
 
+import org.apache.commons.codec.binary.Base64;
+
 import javax.persistence.*;
 
 
@@ -59,5 +61,10 @@ public class DBFile {
 
     public void setData(byte[] data) {
         this.data = data;
+    }
+
+    public String getBase64encodedData() {
+
+        return Base64.encodeBase64String(data);
     }
 }

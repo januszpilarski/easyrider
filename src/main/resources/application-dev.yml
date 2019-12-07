@@ -1,6 +1,6 @@
-#
-# logging
-#
+##
+## logging
+##
 logging:
   level:
     root: info
@@ -8,15 +8,15 @@ logging:
     org.springframework.web: info
     org.springframework.security: info
     org.hibernate.SQL: debug
-#
-# JDBC connection properties
-#
+##
+## JDBC connection properties
+##
 spring:
   datasource:
-#    url: jdbc:mysql://localhost:3306/sfg_dev?useSSL=false&serverTimezone=UTC&useUnicode=true&useJDBCCompliantTimezoneShift=true;
-#    username: er_dev_user
-#    password: pas1
-#    driver-class-name: com.mysql.cj.jdbc.Driver
+    #    url: jdbc:mysql://localhost:3306/sfg_dev?useSSL=false&serverTimezone=UTC&useUnicode=true&useJDBCCompliantTimezoneShift=true;
+    #    username: er_dev_user
+    #    password: pas1
+    #    driver-class-name: com.mysql.cj.jdbc.Driver
     platform: mysql
     hikari:
       data-source-properties:
@@ -26,10 +26,21 @@ spring:
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     database: mysql
     show-sql: true
-#
-# MultipartProperties
-#
-# Enable multipart uploads
+    ##
+    ## Initial schema generation - first startup
+    ##
+#    properties:
+#      javax:
+#        persistence:
+#          schema-generation:
+#            create-source: metadata
+#            scripts:
+#              action: create
+#              create-target: easyrider_database_create.sql
+  ##
+  ## MultipartProperties
+  ##
+  ## Enable multipart uploads
   servlet:
     multipart:
       enabled: true
@@ -41,30 +52,19 @@ spring:
       max-request-size: 30MB
 
 
-#  main:
+    #  main:
 
     # The Open Session In View Anti-Pattern
-#    open-in-view: false
-#    allow-bean-definition-overriding: true
+    #    open-in-view: false
+    #    allow-bean-definition-overriding: true
 
-#  resources:
-#    static-locations: /kowboj3f/src/main/webapp/WEB-INF/views/jsp/
+    #  resources:
+    #    static-locations: /kowboj3f/src/main/webapp/WEB-INF/views/jsp/
 
-#
-# Initial schema generation - first startup
-#
-#    properties:
-#      javax:
-#        persistence:
-#          schema-generation:
-#            create-source: metadata
-#            scripts:
-#              action: create
-#              create-target: easyrider_database_create.sql
 
-#
-# Connection pool properties
-#
+##
+## Connection pool properties
+##
 #connection:
 #  pool:
 #    initialPoolSize: 5

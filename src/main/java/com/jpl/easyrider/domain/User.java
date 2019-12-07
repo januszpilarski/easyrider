@@ -28,8 +28,9 @@ public class User {
     @Lob
     private String selfDescription;
 
-    @Lob
-    private Byte[] image;
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "files_id")
+    private DBFile portrait;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
@@ -140,12 +141,12 @@ public class User {
         this.selfDescription = selfDescription;
     }
 
-    public Byte[] getImage() {
-        return image;
+    public DBFile getPortrait() {
+        return portrait;
     }
 
-    public void setImage(Byte[] image) {
-        this.image = image;
+    public void setPortrait(DBFile portrait) {
+        this.portrait = portrait;
     }
 
     @Override
@@ -175,8 +176,6 @@ public class User {
                 ", password='" + password + '\'' +
                 ", enabled=" + enabled +
                 ", tokenExpired=" + tokenExpired +
-              //  ", roles=" + roles +
-             //   ", trainings=" + trainings +
                 '}'
                 ;
     }
